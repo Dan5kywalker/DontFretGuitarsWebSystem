@@ -18,7 +18,7 @@
         </div>
 
         <!--Tell the form which action it should be submitted to -->
-        <form:form action="${pageContext.request.contextPath}/admin/productInventory/addProduct" method="post"
+        <form:form action="${pageContext.request.contextPath}/admin/product/addProduct" method="post"
                    commandName="product" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name:</label> <form:errors path="productName" cssStyle="color: #ff0000;" />
@@ -28,15 +28,13 @@
         <div class="form-group">
             <label for="category">Category:
                 <form:select path="productCategory" id="category">
-                    <form:option value="acoustic guitar">Acoustic Guitar</form:option>
-                    <form:option value="electric guitar">Electric Guitar</form:option>
-                    <form:option value="bass guitar">Bass Guitar</form:option>
-                    <form:option value="folk instrument">Folk Instrument</form:option>
-                    <form:option value="electric guitar amplifier">Electric Guitar Amplifier</form:option>
-                    <form:option value="bass guitar amplifier">Bass Guitar Amplifier</form:option>
-                    <form:option value="accessory">Accessory</form:option>
-                    <form:option value="guitar pedal">Guitar Pedal</form:option>
-                    <form:option value="bass pedal">Bass Pedal</form:option>
+                    <form:option value="Acoustic Guitar">Acoustic Guitar</form:option>
+                    <form:option value="Electric Guitar">Electric Guitar</form:option>
+                    <form:option value="Bass Guitar">Bass Guitar</form:option>
+                    <form:option value="Folk Instrument">Folk Instrument</form:option>
+                    <form:option value="Electric Guitar Amplifier">Electric Guitar Amplifier</form:option>
+                    <form:option value="Bass Guitar Amplifier">Bass Guitar Amplifier</form:option>
+                    <form:option value="Accessory">Accessory</form:option>
              </form:select>
             </label>
         </div>
@@ -54,10 +52,10 @@
         <div class="form-group">
             <label for="condition">Condition: </label>
             <label class="checkbox-inline">
-                <form:radiobutton path="productCondition" id="condition" value="new"/> New
+                <form:radiobutton path="productCondition" id="condition" value="New"/> New
             </label>
             <label class="checkbox-inline">
-                <form:radiobutton path="productCondition" id="condition" value="pre-owned"/> Pre-Owned
+                <form:radiobutton path="productCondition" id="condition" value="Pre-Owned"/> Pre-Owned
             </label>
         </div>
 

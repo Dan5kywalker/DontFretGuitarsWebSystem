@@ -1,29 +1,51 @@
 package com.DontFretGuitarsWebSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
 /**
  * Created by danielwalker on 25/04/2016.
  */
-public class CartItem {
+@Entity
+public class CartItem implements Serializable {
 
+
+    private static final long serialVersionUID = 6035226891067262429L;
+
+    @Id
+    @GeneratedValue
+    private int cartItemId;
+
+    @ManyToOne
+    @JoinColumn(name = "cartId")
+    @JsonIgnore
+    private Cart cart;
+
+    @ManyToOne
+    @JoinColumn(name = "productId")
     private Product product;
+
     private int quantity;
     private double totalPrice;
 
-    public CartItem() {}
+    //============================================ Getters and Setters ===============================================//
 
-    public CartItem(Product product) {
-        this.product = product;
-        this.quantity= 1;
-        this.totalPrice = product.getProductPrice();
+    public int getCartItemId() {
+        return cartItemId;
     }
 
-
-    public double getTotalPrice() {
-        return totalPrice;
+    public void setCartItemId(int cartItemId) {
+        this.cartItemId = cartItemId;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     public Product getProduct() {
@@ -40,5 +62,13 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

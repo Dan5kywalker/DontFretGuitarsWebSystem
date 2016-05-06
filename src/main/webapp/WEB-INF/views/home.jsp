@@ -35,7 +35,7 @@
                 <div class="carousel-caption">
                     <h1>Stocking all the major brands</h1>
                     <p>Including Fender, Gibson, Horner, Rickenbacker, Marshall and many more!</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse our catalogue!</a></p>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Join us!</h1>
-                    <p>Place an order of some of our exclusive products!</p>
+                    <p>Place an order for some of our exclusive products!</p>
 
                     <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign Up Today!</a></p>
                 </div>

@@ -21,7 +21,13 @@
     <title>Don't Fret Guitar Store</title>
      
     <!-- AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js" > </script>
+
+    <%--Jquery--%>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <%--Data Table--%>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -31,6 +37,8 @@
 
     <!-- Main Table CSS -->
     <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
+
+    <link href="https://cdn.dataTables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
      
 </head>
 <!-- NAVBAR
@@ -53,7 +61,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="<c:url value="/" />">Home</a></li>
-                        <li><a href="<c:url value="/productList" />">Products</a></li>
+                        <li><a href="<c:url value="/product/productList" />">Products</a></li>
                         <li><a href="#contact">Contact</a></li>
                        <!-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -70,7 +78,22 @@
                         </li> -->
                     </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <li><a href="<c:url value="/admin"/>">Admin</a></li>
+                        <!--Retrieve the user form the Spring security context-->
+                        <c:if test="${pageContext.request.userPrincipal.name != null}">
+                            <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
+                            <li><a href="<c:url value="/j_spring_security_logout"/>">Logout</a></li>
+                            <c:if test="${pageContext.request.userPrincipal.name != 'StoreManager'}">
+                                <li><a href="<c:url value="/customer/cart" />">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                            </c:if>
+                            <c:if test="${pageContext.request.userPrincipal.name == 'StoreManager'}">
+                                <li><a href="<c:url value="/admin" />">Admin</a></li>
+                            </c:if>
+                        </c:if>
+                        <c:if test="${pageContext.request.userPrincipal.name == null}">
+                        <li><a href="<c:url value="/login/"/>">Login</a></li>
+                        <li><a href="<c:url value="/register"/>">Register</a></li>
+                        </c:if>
                     </ul>
                 </div>
             </div>

@@ -11,12 +11,24 @@
   To change this template use File | Settings | File Templates.
 --%> 
  
+<script>
+    $(document).ready(function(){
+        var searchCondition = '${searchCondition}';
+
+        $('.table').DataTable({
+            "lengthMenu": [[3,5,10,-1], [3,5,10, "All"]],
+            "oSearch": {"sSearch": searchCondition}
+        });
+    });
+
+</script>
+
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
             <h1>All Products</h1>
 
-            <p class="lead">Checkout all the products available now!</p>
+            <p class="lead">Check out all the products available now!</p>
         </div>
          
         <table class="table table-striped table-hover">
@@ -38,7 +50,7 @@
                     <td>${product.productCategory}</td>
                     <td>${product.productCondition}</td>
                     <td>£${product.productPrice} GBP</td>
-                    <td><a href="<spring:url value="/productList/viewProduct/${product.productId}" />"
+                    <td><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
                     ><span class="glyphicon glyphicon-info-sign"></span></a></td>
                 </tr>
             </c:forEach>
