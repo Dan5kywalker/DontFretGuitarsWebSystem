@@ -13,7 +13,7 @@
 
 .table{
     table-layout: fixed;
-    overflow: auto;
+    /*overflow: auto;*/
 }
 
 .table th {
@@ -22,12 +22,12 @@
 
 .table td{
     text-align: center;
-    background: whitesmoke;
+    /*background: whitesmoke; */
 
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    /*display: block; */
+    /*overflow: hidden; */
+    /*text-overflow: ellipsis; */
+    /*white-space: nowrap; */
 }
 
 .login-box {

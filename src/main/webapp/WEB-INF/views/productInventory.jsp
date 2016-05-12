@@ -25,9 +25,9 @@
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
-            <h1>Product Inventory Page</h1>
+            <h1>Product Inventory</h1>
 
-            <p class="lead">This is the product inventory page!</p>
+            <p class="lead">Manage the store's inventory and stock from here!</p>
         </div>
          
         <table class="table table-striped table-hover">
@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <c:forEach items="${products}" var="product">
-                <tr>
+                <tr class="active">
                     <td><img src="<c:url value="/resources/images/${product.productId}.png"/>" alt="image"
                              style="width:100%"/></td>
                     <td>${product.productName}</td>

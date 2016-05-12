@@ -21,6 +21,7 @@ public class Product implements Serializable{
 
     private static final long serialVersionUID = 8238465361722665829L;
 
+    // productId
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int productId;

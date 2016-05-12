@@ -28,8 +28,23 @@
            <a href="<c:url value="/admin/productInventory"/>" >Product Inventory</a>
         </h3>
 
-        <p>Here you can view, check and modify the product inventory!</p>
+        <p>View, check and modify the product inventory.</p>
          
+        <br> <br>
+
+        <h3>
+            <a href="<c:url value="/admin/customer"/>" >Customer Management</a>
+        </h3>
+
+        <p>View the customer list.</p>
+
+        <h3>
+            <a href="<c:url value="/admin/orders"/>" >Order Management</a>
+        </h3>
+
+        <br> <br>
+
+        <p>View orders made by customers</p>
 
 
         <%@include file="/WEB-INF/views/template/footer.jsp" %>

@@ -10,23 +10,28 @@ import java.util.List;
  * Created by danielwalker on 25/04/2016.
  */
 
+// The cart model entity and attributes
 @Entity
-public class Cart implements Serializable {
+public class Cart implements Serializable {  //Whenever we see Serializable, we are passing this model for the checkout flow
 
     private static final long serialVersionUID = 1879917799854031735L;
 
+    // cartId
     @Id
     @GeneratedValue
     private int cartId;
 
+    // One cart for many cart items. contain cart items in this cart
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
 
+    // Cart is owned by one customer
     @OneToOne
     @JoinColumn(name = "customerId")
     @JsonIgnore
     private Customer customer;
 
+    // Grand total for the cart
     private double grandTotal;
 
     //============================================ Getters and Setters ===============================================//

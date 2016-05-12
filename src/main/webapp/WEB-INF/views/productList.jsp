@@ -26,7 +26,7 @@
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
-            <h1>All Products</h1>
+            <h1>Product Catalogue</h1>
 
             <p class="lead">Check out all the products available now!</p>
         </div>
@@ -43,7 +43,7 @@
             </tr>
             </thead>
             <c:forEach items="${products}" var="product">
-                <tr>
+                <tr class="active">
                     <td><img src="<c:url value="/resources/images/${product.productId}.png"/>" alt="image"
                              style="width:100%"/></td>
                     <td>${product.productName}</td>
@@ -51,7 +51,7 @@
                     <td>${product.productCondition}</td>
                     <td>£${product.productPrice} GBP</td>
                     <td><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
-                    ><span class="glyphicon glyphicon-info-sign"></span></a></td>
+                    ><span class="btn btn-info">View Product</span></a></td>
                 </tr>
             </c:forEach>
         </table>

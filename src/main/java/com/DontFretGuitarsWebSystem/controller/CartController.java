@@ -14,13 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by danielwalker on 04/05/2016.
  */
 
+// Controller action to display the customers shopping cart
 @Controller
-@RequestMapping("/customer/cart")
+@RequestMapping("/customer/cart") // Map the action to this URL route
 public class CartController {
 
+    // Autowire bean to customer service for when cart is created for the customer
     @Autowired
     private CustomerService customerService;
 
+    // Display the cart if the cartId exists
     @RequestMapping
     public String getCart(@AuthenticationPrincipal User activeUser) {
         Customer customer = customerService.getCustomerByUsername (activeUser.getUsername());

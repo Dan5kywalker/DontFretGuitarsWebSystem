@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <!--Defines the flow of the Checkout. Pass in the order variable-->
+    <var name="order" class="com.DontFretGuitarsWebSystem.model.CustomerOrder" />
+
+    <!--Action to bind the cart to the order, evaluating if the cartId exists before transitioning to collectInfo-->
+    <action-state id="addCartToOrder">
+        <evaluate expression="cartDaoImpl.validate(requestParameters.cartId)" result="order.cart" />
+        <transition to="invalidCartWarning" on-exception="java.io.IOException" />
+        <transition to="getShippingDetail"/>
+    </action-state>
+
+    <view-state id="getShippingDetail" view="getShippingDetail.jsp" model="order">
+        <transition on="shippingDetailCollected" to="orderConfirmation"/>
+    </view-state>
+
+    <!--The next part of the flow is to show the customer their order before they confirm it-->
+    <view-state id="orderConfirmation">
+        <transition on="orderConfirmed" to="processOrder"/>
+        <transition on="backToGetShippingDetail" to="getShippingDetail"/>
+    </view-state>
+
+    <!--The next phase of the flow is to then process the order while removing all the items from the customer's cart-->
+    <action-state id="processOrder">
+        <evaluate expression="cartItemDaoImpl.removeAllCartItems(order.cart)"/>
+        <transition  to="orderNotification"/>
+    </action-state>
+
+    <!--This part of the flow will then notify the customer that the order has been processed-->
+    <view-state id="orderNotification" model="order">
+        <transition to="endState"/>
+    </view-state>
+
+    <!--End the flow-->
+    <end-state id="endState"/>
+
+    <!--If the cart is invalid, go straight to the end state-->
+    <view-state id="invalidCartWarning">
+        <transition to="endState"/>
+    </view-state>
+
+    <!--If the user chooses to cancel the customerOrder, display a view stating the checkout process has been cancelled-->
+    <end-state id="cancelCheckout" view="checkoutCancelled.jsp"/>
+
+    <global-transitions>
+        <transition on="cancel" to="cancelCheckout"/>
+    </global-transitions>
+</flow>
