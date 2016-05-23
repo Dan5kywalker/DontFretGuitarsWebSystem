@@ -37,7 +37,7 @@
                 <th>Image</th>
                 <th>Product Name</th>
                 <th>Category</th>
-                <th>Condition</th>
+                <th>Stock Level</th>
                 <th>Price</th>
                 <th></th>
             </tr>
@@ -48,7 +48,12 @@
                              style="width:100%"/></td>
                     <td>${product.productName}</td>
                     <td>${product.productCategory}</td>
-                    <td>${product.productCondition}</td>
+                    <c:if test="${product.unitInStock > 0}">
+                    <td>In Stock</td>
+                    </c:if>
+                    <c:if test="${product.unitInStock == 0}">
+                        <td>Out of Stock</td>
+                    </c:if>
                     <td>£${product.productPrice} GBP</td>
                     <td><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
                     ><span class="btn btn-info">View Product</span></a></td>

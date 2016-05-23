@@ -22,12 +22,11 @@ public class OrderController {
     @Autowired
     private CartService cartService;
 
-    // Wire bean to get the cart grand total and crete the order
+    // Wire bean to get the cart grand total and create the order
     @Autowired
     private CustomerOrderService customerOrderService;
 
     // Controller method to create the order
-    //TODO Map elsewhere to create the order after the checkout confirmation
     @RequestMapping("/order/{cartId}")
     public String createOrder(@PathVariable("cartId")int cartId) {
         CustomerOrder customerOrder = new CustomerOrder();

@@ -26,11 +26,9 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>UserName</th>
-                <th>Street Name</th>
-                <th>House Name</th>
-                <th>City</th>
-                <th>County</th>
+                <th>Address</th>
                 <th>Postcode</th>
+                <th></th>
             </tr>
             </thead>
             <c:forEach items="${customerList}" var="customer">
@@ -40,13 +38,17 @@
                     <td>${customer.email}</td>
                     <td>${customer.phoneNo}</td>
                     <td>${customer.username}</td>
-                    <td>${customer.streetName}</td>
-                    <td>${customer.houseName}</td>
-                    <td>${customer.city}</td>
-                    <td>${customer.county}</td>
+                    <td>${customer.houseName}, ${customer.streetName}, ${customer.city}, ${customer.county}</td>
                     <td>${customer.postCode}</td>
+                    <td><a href="<spring:url value="/admin/customer/editCustomer/${customer.customerId}" />"
+                        ><span class="glyphicon glyphicon-user"></span></a>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
+
+        <br>
+
+        <a href="<spring:url value="/admin/customer/customerReport" />" class="btn btn-warning">Download Report</a>
 
         <%@include file="/WEB-INF/views/template/footer.jsp" %>

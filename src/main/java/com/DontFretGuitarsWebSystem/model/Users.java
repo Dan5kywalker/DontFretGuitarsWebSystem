@@ -18,7 +18,7 @@ public class Users {
     private String username;
     private String password;
     private boolean enabled;
-     private int customerId;
+    private int customerId;
 
     //============================================ Getters and Setters ===============================================//
 

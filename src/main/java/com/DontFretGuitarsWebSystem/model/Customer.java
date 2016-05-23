@@ -1,9 +1,11 @@
 package com.DontFretGuitarsWebSystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -32,6 +34,7 @@ public class Customer implements Serializable {
     private String secondName;
 
     // customers email
+    @Email (message = "Email must be valid.")
     @NotEmpty(message = "The email field must not be empty.")
     private String email;
 
@@ -43,6 +46,7 @@ public class Customer implements Serializable {
     private String username;
 
     // customers password
+    @Size(min = 4)
     @NotEmpty(message = "The password field must not be empty.")
     private String password;
 

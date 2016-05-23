@@ -17,26 +17,30 @@ import java.util.List;
  * Created by danielwalker on 02/05/2016.
  */
 
+// Controller for admin actions for the admin dashboard
 @Controller
 @RequestMapping ("/admin")
 public class AdminHome {
 
-    // Define ProductService Bean
+    // Define ProductService Bean to allow for service actions
     @Autowired
     private ProductService productService;
 
-    // Define CustomerService Bean
+    // Define CustomerService Bean to allow for service actions
     @Autowired
      private CustomerService customerService;
 
+    // Define CustomerOrderService Bean to allow for service actions
     @Autowired
     private CustomerOrderService customerOrderService;
 
+    // Controller action to return the admin page
     @RequestMapping
     public String adminPage(){
         return "admin";
     }
 
+    // Controller action to return the product inventory page when requested
     @RequestMapping("/productInventory")
     public String productInventory(Model model) {
         List<Product> products = productService.getProductList();
@@ -45,7 +49,7 @@ public class AdminHome {
         return "productInventory";
     }
 
-    // Controller method for managing and viewing the customer list
+    // Controller method to return the customerManagement for managing and viewing the customer list
     @RequestMapping("/customer")
     public String customerManagement(Model model) {
         List<Customer> customerList = customerService.getAllCustomers();
@@ -54,7 +58,7 @@ public class AdminHome {
         return "customerManagement";
     }
 
-    // Controller method to view and edit order status
+    // Controller method to return the orderManagement page to view orders
     @RequestMapping("/orders")
     public String orderManagement(Model model) {
         List<CustomerOrder> orderList = customerOrderService.getAllOrders();

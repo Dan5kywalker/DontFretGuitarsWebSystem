@@ -15,13 +15,16 @@ import java.util.List;
  * Created by danielwalker on 13/04/2016.
  */
 
-@Repository
-@Transactional
+// DAO implementor for the product class
+
+@Repository // Indicate this class is a repository, for encapsulating storage, retrieval, and search behavior.
+@Transactional // Describe the transaction attributes for this class
 public class ProductDaoImpl implements ProductDao {
 
-    @Autowired
+    @Autowired //Wire bean to Hibernate Session handling.
     private SessionFactory sessionFactory;
 
+    // method to get a particular product by it's id
     public Product getProductById(int id) {
         Session session = sessionFactory.getCurrentSession();
         Product product = (Product) session.get(Product.class, id);
@@ -30,6 +33,7 @@ public class ProductDaoImpl implements ProductDao {
         return product;
     }
 
+    // Method to retrieve all products from the db as a list
     public List<Product> getProductList() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from Product");
@@ -39,18 +43,21 @@ public class ProductDaoImpl implements ProductDao {
         return productList;
     }
 
+    // Method to add the product to the db
     public void addProduct(Product product) {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(product);
         session.flush();
     }
 
+    // Method to edit the product
     public void editProduct(Product product) {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(product);
         session.flush();
     }
 
+    // Method to delete the product from the db
     public void deleteProduct(Product product) {
         Session session = sessionFactory.getCurrentSession();
         session.delete(product);

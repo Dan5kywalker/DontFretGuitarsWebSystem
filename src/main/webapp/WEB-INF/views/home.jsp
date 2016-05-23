@@ -44,8 +44,6 @@
                 <div class="carousel-caption">
                     <h1>Join us!</h1>
                     <p>Place an order for some of our exclusive products!</p>
-
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign Up Today!</a></p>
                 </div>
             </div>
         </div>

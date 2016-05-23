@@ -38,13 +38,14 @@
 
         <p>View the customer list.</p>
 
+        <br> <br>
+
         <h3>
             <a href="<c:url value="/admin/orders"/>" >Order Management</a>
         </h3>
 
-        <br> <br>
-
         <p>View orders made by customers</p>
 
+        <br> <br>
 
         <%@include file="/WEB-INF/views/template/footer.jsp" %>

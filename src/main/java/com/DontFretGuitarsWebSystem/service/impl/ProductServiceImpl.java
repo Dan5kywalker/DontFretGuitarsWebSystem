@@ -12,28 +12,35 @@ import java.util.List;
  * Created by danielwalker on 02/05/2016.
  */
 
-@Service
+// service implementor for the product class
+
+@Service // Register this service as a spring bean
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
+    @Autowired // Wire bean to use the dao object
     private ProductDao productDao;
 
+    // method to get the product by it's id
     public Product getProductById(int productId) {
         return productDao.getProductById(productId);
     }
 
+    // method to get all the products from the db through a list
     public List<Product> getProductList() {
         return productDao.getProductList();
     }
 
+    // method to add a product to the db
     public void addProduct (Product product) {
         productDao.addProduct(product);
     }
 
+    // method to edit the product's details
     public void editProduct(Product product) {
         productDao.editProduct(product);
     }
 
+    // method to delete a product from the db
     public void deleteProduct(Product product) {
         productDao.deleteProduct(product);
     }

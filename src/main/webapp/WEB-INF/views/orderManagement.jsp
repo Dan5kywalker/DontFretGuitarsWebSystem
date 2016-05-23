@@ -18,10 +18,9 @@
     <thead>
     <tr class="bg-success">
         <th>Customer Name</th>
-        <th>Customer Address</th>
+        <th>Customer Delivery Address</th>
         <th>Customer Postcode</th>
         <th>Customer email</th>
-        <th>Items Ordered</th>
 
     </tr>
     </thead>
@@ -31,10 +30,6 @@
             <td>${order.customer.houseName}, ${order.customer.streetName}</td>
             <td>${order.customer.postCode}</td>
             <td>${order.customer.email}</td>
-            <c:forEach var="cartItem" items="${order.cart.cartItems}">
-            <td>${cartItem.product.productName}</td>
-            </c:forEach>
-
         </tr>
     </c:forEach>
 </table>

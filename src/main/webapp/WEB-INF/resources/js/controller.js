@@ -2,7 +2,7 @@
  * Created by danielwalker on 25/04/2016.
  */
 
-// We are now using AngularJS to "consume" the cart REST services
+// Use AngularJS to "consume" the cart REST services
 
 var cartApp = angular.module ("cartApp", []);
 

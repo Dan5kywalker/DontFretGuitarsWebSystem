@@ -15,19 +15,23 @@ import java.util.List;
  * Created by danielwalker on 07/05/2016.
  */
 
-@Repository
-@Transactional
+// DAO implementor for the customerOrder class
+
+@Repository // Indicate this class is a repository, for encapsulating storage, retrieval, and search behavior.
+@Transactional // Describe the transaction attributes for this class
 public class CustomerOrderDaoImpl implements CustomerOrderDao {
 
-    @Autowired
+    @Autowired //Wire bean to Hibernate Session handling.
     private SessionFactory sessionFactory;
 
+    // Method to add the order to the db
     public void addCustomerOrder(CustomerOrder customerOrder){
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(customerOrder);
         session.flush();
     }
 
+    // Method to fetch all orders from the db as a list
     public List<CustomerOrder> getAllOrders() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from CustomerOrder");

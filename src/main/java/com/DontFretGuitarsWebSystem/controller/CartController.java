@@ -32,6 +32,7 @@ public class CartController {
         return "redirect:/customer/cart/"+cartId;
     }
 
+    // If the cart exists, return the cart page.
     @RequestMapping("/{cartId}")
     public String getCartRedirect(@PathVariable (value = "cartId") int cartId, Model model) {
         model.addAttribute("cartId");

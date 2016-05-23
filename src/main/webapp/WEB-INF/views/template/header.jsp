@@ -78,15 +78,15 @@
                         </li> -->
                     </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <!--Retrieve the user form the Spring security context-->
+                        <!--Retrieve the user from the Spring security context-->
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
                             <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
                             <li><a href="<c:url value="/j_spring_security_logout"/>">Logout</a></li>
-                            <c:if test="${pageContext.request.userPrincipal.name != 'StoreManager'}">
+                            <c:if test="${pageContext.request.userPrincipal.name != 'StoreManager' || pageContext.request.userPrincipal.name != 'SalesAssistant'}">
                                 <li><a href="<c:url value="/customer/cart" />">
                                     <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
                             </c:if>
-                            <c:if test="${pageContext.request.userPrincipal.name == 'StoreManager'}">
+                            <c:if test="${pageContext.request.userPrincipal.name == 'StoreManager' || pageContext.request.userPrincipal.name == 'SalesAssistant' }">
                                 <li><a href="<c:url value="/admin" />">Admin</a></li>
                             </c:if>
                         </c:if>

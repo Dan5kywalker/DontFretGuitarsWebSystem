@@ -11,11 +11,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         var searchCondition = '${searchCondition}';
 
         $('.table').DataTable({
-            "lengthMenu": [[3,5,10,-1], [3,5,10, "All"]],
+            "lengthMenu": [[3, 5, 10, -1], [3, 5, 10, "All"]],
             "oSearch": {"sSearch": searchCondition}
         });
     });
@@ -28,6 +28,8 @@
             <h1>Product Inventory</h1>
 
             <p class="lead">Manage the store's inventory and stock from here!</p>
+            <br><br>
+            <p><span style="color: #ff0000" class="glyphicon glyphicon-exclamation-sign"></span> = Out of stock! </p>
         </div>
          
         <table class="table table-striped table-hover">
@@ -36,7 +38,7 @@
                 <th>Image</th>
                 <th>Product Name</th>
                 <th>Category</th>
-                <th>Condition</th>
+                <th>Stock Level</th>
                 <th>Price</th>
                 <th></th>
             </tr>
@@ -47,14 +49,21 @@
                              style="width:100%"/></td>
                     <td>${product.productName}</td>
                     <td>${product.productCategory}</td>
-                    <td>${product.productCondition}</td>
+                    <td>${product.unitInStock}</td>
                     <td>£${product.productPrice} GBP</td>
                     <td><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
                     ><span class="glyphicon glyphicon-info-sign"></span></a>
+                        <c:if test="${pageContext.request.userPrincipal.name != 'SalesAssistant'} ">
                         <a href="<spring:url value="/admin/product/deleteProduct/${product.productId}" />"
                         ><span class="glyphicon glyphicon-remove"></span></a>
+                        </c:if>
+                        <c:if test="${pageContext.request.userPrincipal.name != 'SalesAssistant'} ">
                         <a href="<spring:url value="/admin/product/editProduct/${product.productId}" />"
                         ><span class="glyphicon glyphicon-pencil"></span></a>
+                        </c:if>
+                        <c:if test="${product.unitInStock == 0}">
+                            <span style="color: #ff0000" class="glyphicon glyphicon-exclamation-sign"
+                        </c:if>
                     </td>
 
 
@@ -63,6 +72,6 @@
         </table>
 
         <a href="<spring:url value="/admin/product/addProduct" />" class="btn btn-primary">Add Product</a>
-
+        <a href="<spring:url value="/admin/product/productReport" />" class="btn btn-warning">Download Report</a>
         <%@include file="/WEB-INF/views/template/footer.jsp" %>
 

@@ -73,6 +73,21 @@
           <element id="library" level="project" name="Maven: org.springframework.webflow:spring-js-resources:2.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.webflow:spring-js:2.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.webflow:spring-webflow:2.3.3.RELEASE" />
+          <element id="library" level="project" name="Maven: avalon-framework:avalon-framework-impl:4.2.0" />
+          <element id="library" level="project" name="Maven: bouncycastle:bcprov-jdk14:138" />
+          <element id="library" level="project" name="Maven: com.lowagie:itext:2.1.7.js2" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.0" />
+          <element id="library" level="project" name="Maven: commons-digester:commons-digester:2.1" />
+          <element id="library" level="project" name="Maven: eclipse:jdtcore:3.1.0" />
+          <element id="library" level="project" name="Maven: jfree:jcommon:1.0.15" />
+          <element id="library" level="project" name="Maven: jfree:jfreechart:1.0.12" />
+          <element id="library" level="project" name="Maven: net.sf.barcode4j:barcode4j:2.0" />
+          <element id="library" level="project" name="Maven: net.sf.jasperreports:jasperreports:5.0.4" />
+          <element id="library" level="project" name="Maven: net.sourceforge.dynamicreports:dynamicreports-core:3.1.3" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.1" />
+          <element id="library" level="project" name="Maven: org.codehaus.castor:castor:1.2" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.4" />
+          <element id="library" level="project" name="Maven: com.stripe:stripe-java:2.5.0" />
         </element>
       </element>
     </root>

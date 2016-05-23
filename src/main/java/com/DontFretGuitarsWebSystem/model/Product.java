@@ -16,7 +16,7 @@ import java.util.List;
 
 // All models used within the Spring Webflow must implement the Serializable interface
 @Entity
-public class Product implements Serializable{
+public class Product implements Serializable {
 
 
     private static final long serialVersionUID = 8238465361722665829L;
@@ -26,19 +26,23 @@ public class Product implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int productId;
 
+    // When added, the product must have a name
     @NotEmpty (message = "Product must have a name")
     private String productName;
     private String productCategory;
     private String productDescription;
 
+    // The product price must not be less than 0
     @Min (value = 0 , message = "The product price must not be less than zero")
     private double productPrice;
     private String productCondition;
     private String productStatus;
 
+    // The products unit in stock must not be less than zero
     @Min (value = 0, message = "The product unit must not be less than zero")
     private int unitInStock;
 
+    // The product must have a manufacturer
     @NotEmpty (message = "Product must have a manufacturer")
     private String productManufacturer;
 
@@ -130,11 +134,10 @@ public class Product implements Serializable{
         this.productImage = productImage;
     }
 
-    public List<CartItem> getCartItemList() {
+   public List<CartItem> getCartItemList() {
         return cartItemList;
     }
 
-    public void setCartItemList(List<CartItem> cartItemList) {
-        this.cartItemList = cartItemList;
-    }
+     public void setCartItemList(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;}
 }

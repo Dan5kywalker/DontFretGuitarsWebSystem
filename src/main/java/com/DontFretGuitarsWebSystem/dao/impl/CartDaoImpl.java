@@ -15,21 +15,25 @@ import java.io.IOException;
  * Created by danielwalker on 05/05/2016.
  */
 
-@Repository
-@Transactional
+// DAO implementor for the cart class
+
+@Repository // Indicate this class is a repository, for encapsulating storage, retrieval, and search behavior.
+@Transactional // Describe the transaction attributes for this class
 public class CartDaoImpl implements CartDao {
 
-    @Autowired
+    @Autowired  //Wire bean to Hibernate Session handling.
     private SessionFactory sessionFactory;
 
-    @Autowired
+    @Autowired //Wire bean for dependencies within the customerOrder
     private CustomerOrderService customerOrderService;
 
+    // Method to retrieve the users cart by an id
     public Cart getCartById (int cartId) {
         Session session = sessionFactory.getCurrentSession();
         return (Cart) session.get(Cart.class, cartId);
     }
 
+    // Method to update the users cart, for example, removing or adding an item.
     public void update(Cart cart) {
         int cartId = cart.getCartId();
         double grandTotal = customerOrderService.getCustomerOrderGrandTotal(cartId);
@@ -39,6 +43,7 @@ public class CartDaoImpl implements CartDao {
         session.saveOrUpdate(cart);
     }
 
+    // Method to ensure the users cart is valid
     public Cart validate(int cartId) throws IOException {
         Cart cart = getCartById(cartId);
         if(cart == null||cart.getCartItems().size()==0){

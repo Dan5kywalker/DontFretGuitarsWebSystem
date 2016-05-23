@@ -16,13 +16,17 @@ import java.util.List;
 /**
  * Created by danielwalker on 03/05/2016.
  */
-@Repository
-@Transactional
+
+// DAO implementor for the cartItem class
+
+@Repository // Indicate this class is a repository, for encapsulating storage, retrieval, and search behavior.
+@Transactional // Describe the transaction attributes for this class
 public class CustomerDaoImpl implements CustomerDao{
 
-    @Autowired
+    @Autowired //Wire bean for Hibernate Session handling.
     private SessionFactory sessionFactory;
 
+    // Method to add a customer to the db by creating the user, setting their authority as user and assinging them a cart.
     public void addCustomer(Customer customer) {
         Session session = sessionFactory.getCurrentSession();
 
@@ -49,11 +53,17 @@ public class CustomerDaoImpl implements CustomerDao{
         session.flush();
     }
 
-    public Customer getCustomerById(int customerId) {
+    // Method to get a particular cutomer by thier id.
+    public Customer getCustomerById(int id) {
         Session session = sessionFactory.getCurrentSession();
-        return(Customer) session.get(Customer.class, customerId);
+        Customer customer = (Customer) session.get(Customer.class, id);
+        //return(Customer) session.get(Customer.class, id);
+        session.flush();
+
+        return customer;
     }
 
+    // Method to retrieve the list of customers from the db
     public List<Customer> getAllCustomers() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from Customer");
@@ -71,5 +81,12 @@ public class CustomerDaoImpl implements CustomerDao{
         query.setString(0, username);
 
         return (Customer) query. uniqueResult();
+    }
+
+    // method to update the customer details
+    public void editCustomer(Customer customer) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(customer);
+        session.flush();
     }
 }

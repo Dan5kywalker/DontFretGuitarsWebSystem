@@ -24,20 +24,18 @@ public class CustomerOrder implements Serializable{
     @JoinColumn(name = "cartId")
     private Cart cart;
 
-    // Order belongs to a certain customer
+    // Orders belongs to a certain customer
     @ManyToOne
     @JoinColumn(name = "customerId")
     private Customer customer;
 
-    //TODO create order status variable
-
     //============================================ Getters and Setters ===============================================//
 
-    public int getOrderId() {
+    public int getCustomerOrderId() {
         return customerOrderId;
     }
 
-    public void setOrderId(int customerOrderId) {
+    public void setCustomerOrderId(int customerOrderId) {
         this.customerOrderId = customerOrderId;
     }
 

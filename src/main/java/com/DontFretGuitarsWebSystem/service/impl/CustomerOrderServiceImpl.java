@@ -15,20 +15,22 @@ import java.util.List;
  * Created by danielwalker on 07/05/2016.
  */
 
-@Service
+// Service implementor for the customerOrder class
+
+@Service // Register this service as a spring bean
 public class CustomerOrderServiceImpl implements CustomerOrderService {
 
-    @Autowired
+    @Autowired // Wire bean to use the dao object
     private CustomerOrderDao customerOrderDao;
 
-    @Autowired
+    @Autowired // Wire bean to use the cart service
     private CartService cartService;
 
-    public void addCustomerOrder(CustomerOrder customerOrder) {
+    public void addCustomerOrder(CustomerOrder customerOrder) { //method to create the order
         customerOrderDao.addCustomerOrder(customerOrder);
     }
 
-    public double getCustomerOrderGrandTotal (int cartId) {
+    public double getCustomerOrderGrandTotal (int cartId) { // method to get the value of the order total
         double grandTotal=0;
         Cart cart = cartService.getCartById(cartId);
         List<CartItem> cartItems = cart.getCartItems();
@@ -40,5 +42,5 @@ public class CustomerOrderServiceImpl implements CustomerOrderService {
         return grandTotal;
     }
 
-    public List<CustomerOrder> getAllOrders(){ return customerOrderDao.getAllOrders();}
+    public List<CustomerOrder> getAllOrders(){ return customerOrderDao.getAllOrders();} // Method to retrieve all orders from the db as a list
 }

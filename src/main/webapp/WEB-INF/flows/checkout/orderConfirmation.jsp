@@ -33,7 +33,10 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <address>
-                                <strong>Shipping Address</strong><br>
+                                <strong>Name: ${order.customer.firstName} ${order.customer.secondName}</strong>
+                                <br>
+                                <strong>Shipping Address</strong>
+                                <br>
                                     ${order.cart.customer.streetName}
                                 <br>
                                     ${order.cart.customer.houseName}
@@ -47,19 +50,6 @@
                             <p>Order Date: <fmt:formatDate type="date" value="${now}"/></p>
                         </div>
                     </div>
-                   <!-- <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <address>
-                                <strong>Shipping Details</strong><br>
-                                    ${order.cart.customer.streetName}
-                                <br>
-                                    ${order.cart.customer.houseName}
-                                <br>
-                                    ${order.cart.customer.city},${order.cart.customer.county}
-                                <br>
-                                    ${order.cart.customer.postCode}
-                            </address>
-                        </div> -->
                         <div class="row">
                             <table class="table table-hover">
                                 <thead>
@@ -96,6 +86,18 @@
                         </div>
 
                         <input type="hidden" name="_flowExecutionKey"/>
+
+                    <form action="/checkout" method="POST">
+                        <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+                                data-amount="${order.cart.grandTotal}"
+                                data-name="Stripe.com"
+                                data-description="Widget"
+                                data-image="/img/documentation/checkout/marketplace.png"
+                                data-locale="auto">
+                        </script>
+                    </form>
 
                         <br><br>
                         <button class="btn btn-default" name="_eventId_backToGetShippingDetail">Back</button>

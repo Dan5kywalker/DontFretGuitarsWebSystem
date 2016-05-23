@@ -1,6 +1,7 @@
 package com.DontFretGuitarsWebSystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.internal.Nullable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,6 +23,7 @@ public class CartItem implements Serializable {
     private int cartItemId;
 
     // Join cartItem to the cart belonging to the customer
+    @Nullable
     @ManyToOne
     @JoinColumn(name = "cartId")
     @JsonIgnore

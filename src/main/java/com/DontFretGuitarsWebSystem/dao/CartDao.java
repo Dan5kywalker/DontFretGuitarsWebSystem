@@ -7,14 +7,14 @@ import java.io.IOException;
 /**
  * Created by danielwalker on 25/04/2016.
  */
+
+// CartDao interface
 public interface CartDao {
 
-    Cart getCartById(int cartId);
+    Cart getCartById(int cartId); //Interface method to get the cart by it's id
 
-    Cart validate (int cartId) throws IOException;
+    Cart validate (int cartId) throws IOException; // Interface method to validate the cart by it's id
 
-    void update(Cart cart);
-
-
+    void update(Cart cart); // interface method to update the cart
 
 }

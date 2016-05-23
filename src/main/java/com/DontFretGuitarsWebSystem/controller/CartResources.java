@@ -26,7 +26,7 @@ import java.util.List;
 @RequestMapping("/rest/cart")
 public class CartResources {
 
-    // Wire bean to interact with the services for db access
+    // Wire bean to interact with the services layer for db access
     @Autowired
     private CartService cartService;
 
